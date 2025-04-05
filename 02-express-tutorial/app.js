@@ -65,8 +65,8 @@ app.get('/api/v1/query', (req, res) => {
 
 //app.post()
 
-app.all('./public', (req, res, next) => {
-    next();
+app.all('*', (req, res, next) => {
+    res.status(404).json({ message: 'Page Not Found' });
 })
 
 app.listen(port, () => {
