@@ -1,0 +1,13 @@
+In this lesson, you created a middleware function called asyncWrapper. Why?
+The asyncWrapper helped to simplify and condense the route and error handling for each route
+Using the asyncWrapper allowed the controllers to refactor and become much smaller in file size while allowing it to be more manageable
+It also allows us to automatically catch any errors for routes without having to set it up individually.
+
+2. const getTask = asyncWrapper(async (req, res, next) => {  
+  const { id: taskID } = req.params;  
+  const task = await Task.findOne({ _id: taskID });  
+  if (!task) {  
+     return next(createCustomErr(`No task with id : ${taskID}`, 404))
+  }  
+  res.status(200).json({ task });  
+});
